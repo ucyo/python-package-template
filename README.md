@@ -1,2 +1,1 @@
-# App
-Add a description for the app base
+# Template for Python

@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.10
 
 ENV LANG="C.UTF-8" LC_ALL="C.UTF-8" PATH="/home/python/.poetry/bin:/home/python/.local/bin:$PATH" PIP_NO_CACHE_DIR="false"
 
@@ -10,13 +10,13 @@ RUN groupadd --gid 1000 python && \
     useradd  --uid 1000 --gid python --shell /bin/bash --create-home python
 
 USER 1000
-RUN mkdir /home/python/code
-WORKDIR /home/python/code
+RUN mkdir /home/python/app
+WORKDIR /home/python/app
 
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+RUN curl -sSL https://install.python-poetry.org/ | python3 -
 RUN poetry config virtualenvs.create false
 
 COPY --chown=python:python . /home/python/
-RUN poetry install --no-interaction --no-ansi
+RUN poetry install --no-interaction --no-ansi --no-root
 
 CMD ["main"]
