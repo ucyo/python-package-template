@@ -16,7 +16,7 @@ WORKDIR /home/python/code
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 RUN poetry config virtualenvs.create false
 
-COPY --chown=python:python . /home/python/code/
+COPY --chown=python:python . /home/python/
 RUN poetry install --no-interaction --no-ansi
 
 CMD ["main"]

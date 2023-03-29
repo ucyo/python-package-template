@@ -1,2 +1,2 @@
-# Code
-Add a description for the code base
+# App
+Add a description for the app base
