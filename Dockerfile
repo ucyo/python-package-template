@@ -23,8 +23,9 @@ WORKDIR /home/python/
 
 RUN curl -sSf https://rye-up.com/get | bash -
 
-# COPY --chown=python:python . /home/python
+COPY --chown=python:python . /home/python
+WORKDIR /home/python/code
 
-# RUN poetry install --no-interaction --no-ansi
+RUN rye sync
 
-CMD ["ls"]
+CMD ["rye", "run", "python"]
