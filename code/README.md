@@ -1,3 +1,3 @@
-# code
+# app
 
 Describe your project here.
