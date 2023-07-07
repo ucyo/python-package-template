@@ -1,32 +1,30 @@
-FROM ubuntu:22.10
+FROM python:3-slim
 
 ENV LANG="C.UTF-8" \
     LC_ALL="C.UTF-8" \
-    PATH="/home/python/.poetry/bin:/home/python/.local/bin:$PATH" \
-    PIP_NO_CACHE_DIR="false" \
-    POETRY_VERSION="1.5.1"
+    PATH="/home/python/.rye/shims:$PATH" \
+    PIP_NO_CACHE_DIR="false"
+
+ENV RYE_VERSION="0.4.0" \
+    RYE_INSTALL_OPTION="--yes"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
     inotify-tools \
     make \
-    python-is-python3 \
-    python3 \
-    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd --gid 1000 python && \
     useradd  --uid 1000 --gid python --shell /bin/bash --create-home python
 
 USER 1000
-RUN mkdir /home/python/app
-WORKDIR /home/python/app
+WORKDIR /home/python/
 
-RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN curl -sSf https://rye-up.com/get | bash -
 
-COPY --chown=python:python . /home/python
+# COPY --chown=python:python . /home/python
 
-RUN poetry install --no-interaction --no-ansi
+# RUN poetry install --no-interaction --no-ansi
 
 CMD ["ls"]
