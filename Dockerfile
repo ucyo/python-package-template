@@ -5,7 +5,7 @@ ENV LANG="C.UTF-8" \
     PATH="/home/python/.rye/shims:$PATH" \
     PIP_NO_CACHE_DIR="false"
 
-ENV RYE_VERSION="0.4.0" \
+ENV RYE_VERSION="0.10.0" \
     RYE_INSTALL_OPTION="--yes"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -26,6 +26,7 @@ RUN curl -sSf https://rye-up.com/get | bash -
 COPY --chown=python:python . /home/python
 WORKDIR /home/python/code
 
+RUN rye config --set-bool behavior.global-python=true
 RUN rye sync
 
 CMD ["rye", "run", "python"]
