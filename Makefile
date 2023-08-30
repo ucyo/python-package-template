@@ -14,7 +14,7 @@ base-container:
 	@echo "===================================================================="
 	@echo "Build Docker Container"
 	@echo "===================================================================="
-	@docker build --target base --tag ucyo/geomatch:base .
+	@docker build --target base --tag code/code:base .
 
 bash: base-container
 	@echo "===================================================================="
@@ -23,7 +23,7 @@ bash: base-container
 	@docker run --env-file=.env --rm -it \
 			--volume $(shell pwd)/code:/home/python/code \
 			--workdir /home/python/code \
-			ucyo/geomatch:base \
+			code/code:base \
 			/bin/bash
 
 .PHONY: bash base-container container prod
