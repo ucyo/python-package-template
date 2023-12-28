@@ -2,28 +2,28 @@ container:
 	@echo "===================================================================="
 	@echo "Build production ready docker container"
 	@echo "===================================================================="
-	@docker build --tag code/code:prod --tag code/code:latest .
+	@docker build --tag template/app:prod --tag template/app:latest .
 
 prod: container
 	@echo "===================================================================="
 	@echo "Start and enter production ready docker container"
 	@echo "===================================================================="
-	@docker run --env-file=.env --rm -it code/code:prod /bin/bash
+	@docker run --env-file=.env --rm -it template/app:prod /bin/bash
 
-base-container:
+dev-container:
 	@echo "===================================================================="
-	@echo "Build Docker Container"
+	@echo "Build Development Container"
 	@echo "===================================================================="
-	@docker build --target base --tag code/code:base .
+	@docker build --target dev --tag template/app:dev .
 
-bash: base-container
+bash: dev-container
 	@echo "===================================================================="
-	@echo "Start and enter container"
+	@echo "Start and enter development container"
 	@echo "===================================================================="
 	@docker run --env-file=.env --rm -it \
 			--volume $(shell pwd)/code:/home/python/code \
 			--workdir /home/python/code \
-			code/code:base \
+			 template/app:dev \
 			/bin/bash
 
-.PHONY: bash base-container container prod
+.PHONY: bash dev-container container prod
