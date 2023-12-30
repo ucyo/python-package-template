@@ -27,11 +27,11 @@ container, since they are mounted.
 
 The first thing you want to do is give your project a proper name.
 
-1. Rename the `project` in [./src/pyproject.toml](pyproject.toml) and update the `description`.
-2. Rename the `src/app` to your project name.
+1. Rename the `project` in [pyproject.toml](./app/pyproject.toml) and update the `description`.
+2. Rename the `app/src/app` to your project name.
 
     ```bash
-    $ > mv src/app src/<projectname>
+    $ > mv app/src/app app/src/<projectname>
     ```
 
 ### Add dependencies
