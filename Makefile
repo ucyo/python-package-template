@@ -21,8 +21,8 @@ bash: dev-container
 	@echo "Start and enter development container"
 	@echo "===================================================================="
 	@docker run --env-file=.env --rm -it \
-			--volume $(shell pwd)/code:/home/python/code \
-			--workdir /home/python/code \
+			--volume $(shell pwd)/app:/home/python/app \
+			--workdir /home/python/app \
 			 template/app:dev \
 			/bin/bash
 
