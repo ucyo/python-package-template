@@ -56,7 +56,6 @@ Add your dependencies to the project.
     $ > rye sync
     ```
 
-This will generate (or update) `requirements.lock` and `requirements-dev.lock`.
 The next time you build the container your dependencies have been installed.
 
 ### Update the README
@@ -65,7 +64,7 @@ A fresh start. Just move [the blank README.md](./app/README.md) over here and
 start with your project.
 
 ```bash
-$ > mv src/<projectname>/README.md .
+$ > mv app/README.md .
 ```
 
 ## Explore
