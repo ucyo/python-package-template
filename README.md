@@ -28,10 +28,10 @@ container, since they are mounted.
 The first thing you want to do is give your project a proper name.
 
 1. Rename the `project` in [./src/pyproject.toml](pyproject.toml) and update the `description`.
-2. Rename the `src/code` to your project name.
+2. Rename the `src/app` to your project name.
 
     ```bash
-    $ > mv src/code src/<projectname>
+    $ > mv src/app src/<projectname>
     ```
 
 ### Add dependencies
@@ -61,7 +61,7 @@ The next time you build the container your dependencies have been installed.
 
 ### Update the README
 
-A fresh start. Just move [the blank README.md](./code/README.md) over here and
+A fresh start. Just move [the blank README.md](./app/README.md) over here and
 start with your project.
 
 ```bash
